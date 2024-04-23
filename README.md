@@ -23,17 +23,16 @@ Le role de la macro, est de transformé un nombre de ms en nombre de tick. Si l'
 
 6. Changez les priorités. Expliquez les changements dans l’affichage.
 Dans ce screen on a mis la tache Take plus prioritaire que la tache give, ce qui took s'écrit avant token given.
-
-7. et 8. Voici le code des taches, avec task notification et queue.
 https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot1.png
 
+7. et 8. Voici le code des taches, avec task notification et queue.
+https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot2.png
+
+12. Il faut créer un sémaphore binaire et prendre le sémaphore dans les taches avant d'utiliser le printf. On donne le sémaphore quand on a finit d'utiliser le printf.
 
 ## 2 On joue avec le Shell
-1.3. Expliquer les mécanismes qui mènent à l’exécution de la fonction.
-
-1.4. Quel est le problème ?
-
-1.5. Proposer une solution
-
 2. Que se passe-t-il si l’on ne respecte pas les priorités décrites précédemment ?
+L'appel d'une fonction FreeRTOS déclenche un hardfault.
+
+
 
