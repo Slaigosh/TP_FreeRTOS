@@ -34,5 +34,9 @@ https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot2.png
 2. Que se passe-t-il si l’on ne respecte pas les priorités décrites précédemment ?
 L'appel d'une fonction FreeRTOS déclenche un hardfault.
 
+3.Voici la fonction LED:
+
+4. Voici la fonction spam
+
 
 
