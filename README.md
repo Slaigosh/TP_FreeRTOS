@@ -23,6 +23,7 @@ Le role de la macro, est de transformé un nombre de ms en nombre de tick. Si l'
 
 6. Changez les priorités. Expliquez les changements dans l’affichage.
 
+
 ## 2 On joue avec le Shell
 1.3. Expliquer les mécanismes qui mènent à l’exécution de la fonction.
 
