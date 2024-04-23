@@ -22,7 +22,10 @@ C'est la consommation HEAP total de l'OS. Si on met pas une taille assez grande,
 Le role de la macro, est de transformé un nombre de ms en nombre de tick. Si l'horloge de l'OS est de 1KHz: 1ms = 1tick.
 
 6. Changez les priorités. Expliquez les changements dans l’affichage.
-Voici l'image qui montre 
+Dans ce screen on a mis la tache Take plus prioritaire que la tache give, ce qui took s'écrit avant token given.
+
+7. et 8. Voici le code des taches, avec task notification et queue.
+https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot1.png
 
 
 ## 2 On joue avec le Shell
