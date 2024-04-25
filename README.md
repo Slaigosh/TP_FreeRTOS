@@ -50,12 +50,12 @@ Voici notre mémoire à cet instant:
 https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot4.png
 
 6. Notez la nouvelle utilisation mémoire.
-https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot5.png
+https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot4.png
 
 7. Dans CubeMX, augmentez la taille du tas (TOTAL_HEAP_SIZE). Générez le code, compilez et testez.
 
 8. Notez la nouvelle utilisation mémoire. Expliquez les trois relevés.
-https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot6.png
+https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot5.png
 
 Pour les 2 premiers relevés avant/après les taches bidons, on constate les meme relevés.
 Cela représente pas l'utilisation imadiate, mais ce que FreeRTOS reserve dans la mémoire.
