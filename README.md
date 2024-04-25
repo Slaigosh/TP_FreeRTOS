@@ -92,6 +92,7 @@ Il n'y en a pas car on n'en utilise pas dans le projet.
 2. Dans la fonction shell, écrivez un code permettant de récupérer la valeur du
 DEVID, et vérifiez si elle est correcte.
 Voici le code le fonction et le résultat:
+
 ![plot](./Screenshot8.png)
 ![plot](./Screenshot9.png)
 
