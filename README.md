@@ -49,11 +49,16 @@ C'est géré par le FreeRTOS car on le retrouve dans la fonction pvPortMalloc qu
 Voici notre mémoire à cet instant:
 https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot4.png
 
-5. Créez des tâches bidons jusqu’à avoir une erreur.
-
 6. Notez la nouvelle utilisation mémoire.
+https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot5.png
 
-8. Dans CubeMX, augmentez la taille du tas (TOTAL_HEAP_SIZE). Générez le code, compilez et testez.
+7. Dans CubeMX, augmentez la taille du tas (TOTAL_HEAP_SIZE). Générez le code, compilez et testez.
 
-9. Notez la nouvelle utilisation mémoire. Expliquez les trois relevés.
+8. Notez la nouvelle utilisation mémoire. Expliquez les trois relevés.
+https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot6.png
 
+Pour les 2 premiers relevés avant/après les taches bidons, on constate les meme relevés.
+Cela représente pas l'utilisation imadiate, mais ce que FreeRTOS reserve dans la mémoire.
+Après avoir augmenté la taille de FreeRTOS, on voit bien un plus gros pourcentage d'utilisation.
+
+### 3.2 Gestion des piles
