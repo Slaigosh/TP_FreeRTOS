@@ -38,5 +38,21 @@ L'appel d'une fonction FreeRTOS déclenche un hardfault.
 https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot3.png
 
 ## 3 Debug, gestion d’erreur et statistiques
+### 3.1 Gestion du tas
+1. Quel est le nom de la zone réservée à l’allocation dynamique ?
+C'est la zone HEAP.
 
+2. Est-ce géré par FreeRTOS ou la HAL ?
+C'est géré par le FreeRTOS car on le retrouve dans la fonction pvPortMalloc qui est géré par le FreeRTOS.
+
+4. Notez la mémoire RAM et Flash utilisée.
+Voici notre mémoire à cet instant:
+
+6. Créez des tâches bidons jusqu’à avoir une erreur.
+
+7. Notez la nouvelle utilisation mémoire.
+
+8. Dans CubeMX, augmentez la taille du tas (TOTAL_HEAP_SIZE). Générez le code, compilez et testez.
+
+9. Notez la nouvelle utilisation mémoire. Expliquez les trois relevés.
 
