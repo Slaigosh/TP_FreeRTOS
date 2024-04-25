@@ -23,10 +23,10 @@ Le role de la macro, est de transformé un nombre de ms en nombre de tick. Si l'
 
 6. Changez les priorités. Expliquez les changements dans l’affichage.
 Dans ce screen on a mis la tache Take plus prioritaire que la tache give, ce qui took s'écrit avant token given.
-https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot1.png
+![plot](./Screenshot1.png)
 
 7. et 8. Voici le code des taches, avec task notification et queue.
-https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot2.png
+![plot](./Screenshot2.png)
 
 12. Il faut créer un sémaphore binaire et prendre le sémaphore dans les taches avant d'utiliser le printf. On donne le sémaphore quand on a finit d'utiliser le printf.
 
@@ -35,7 +35,7 @@ https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot2.png
 L'appel d'une fonction FreeRTOS déclenche un hardfault.
 
 3. et 4. Voici la fonction LED et spam:
-https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot3.png
+![plot](./Screenshot3.png)
 
 ## 3 Debug, gestion d’erreur et statistiques
 ### 3.1 Gestion du tas
@@ -47,10 +47,10 @@ C'est géré par le FreeRTOS car on le retrouve dans la fonction pvPortMalloc qu
 
 4. Notez la mémoire RAM et Flash utilisée.
 Voici notre mémoire à cet instant:
-https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot4.png
+![plot](./Screenshot4.png)
 
 6. Notez la nouvelle utilisation mémoire.
-https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot4.png
+![plot](./Screenshot4.png)
 
 7. Dans CubeMX, augmentez la taille du tas (TOTAL_HEAP_SIZE). Générez le code, compilez et testez.
 
