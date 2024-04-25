@@ -87,4 +87,10 @@ DEMON_TASK_STARTUP_HOOK : lance une fonction au démarrage
 Il n'y en a pas car on n'en utilise pas dans le projet.
 
 ## 4 Écriture d’un driver
-### 4.1 Interfacer l’ADXL345
+### 4.2 Premiers tests
+
+3. Quelles sont les valeurs à mettre dans les registres INT_ENABLE et POWER_CTL pour démarrer la mesure et délencher une interruption à chaque mesure ?
+Il faut mettre le bit D7 DATA_READY à 1 dans INT_ENABLE
+Il faut mettre le bit D3 Measure à 1 dans POWER_CTL
+
+
