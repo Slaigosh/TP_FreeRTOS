@@ -25,9 +25,11 @@ Le role de la macro, est de transformé un nombre de ms en nombre de tick. Si l'
 
 6. Changez les priorités. Expliquez les changements dans l’affichage.
 Dans ce screen on a mis la tache Take plus prioritaire que la tache give, ce qui took s'écrit avant token given.
+
 ![plot](./Screenshot1.png)
 
 7. et 8. Voici le code des taches, avec task notification et queue.
+
 ![plot](./Screenshot2.png)
 
 12. Il faut créer un sémaphore binaire et prendre le sémaphore dans les taches avant d'utiliser le printf. On donne le sémaphore quand on a finit d'utiliser le printf.
@@ -38,6 +40,7 @@ Dans ce screen on a mis la tache Take plus prioritaire que la tache give, ce qui
 L'appel d'une fonction FreeRTOS déclenche un hardfault.
 
 3. et 4. Voici la fonction LED et spam:
+
 ![plot](./Screenshot3.png)
 
 ## 3 Debug, gestion d’erreur et statistiques
@@ -51,15 +54,18 @@ C'est géré par le FreeRTOS car on le retrouve dans la fonction pvPortMalloc qu
 
 4. Notez la mémoire RAM et Flash utilisée.
 Voici notre mémoire à cet instant:
-![plot](./Screenshot4.png)
+
+![plot](./Screenshot5.png)
 
 6. Notez la nouvelle utilisation mémoire.
-![plot](./Screenshot4.png)
+
+![plot](./Screenshot5.png)
 
 7. Dans CubeMX, augmentez la taille du tas (TOTAL_HEAP_SIZE). Générez le code, compilez et testez.
 
 8. Notez la nouvelle utilisation mémoire. Expliquez les trois relevés.
-![plot](./Screenshot5.png)
+
+![plot](./Screenshot4.png)
 
 Pour les 2 premiers relevés avant/après les taches bidons, on constate les meme relevés.
 Cela représente pas l'utilisation imadiate, mais ce que FreeRTOS reserve dans la mémoire.
@@ -70,6 +76,7 @@ Après avoir augmenté la taille de FreeRTOS, on voit bien un plus gros pourcent
 3. Écrivez la fonction vApplicationStackOverflowHook. (Rappel : C’est une
 fonction appelée automatiquement par FreeRTOS, vous n’avez pas à l’appeler
 vous-même).
+
 ![plot](./Screenshot6.png)
 
 5. Il existe d’autres hooks. Expliquez l’intérêt de chacun d’entre eux.
@@ -81,6 +88,7 @@ DEMON_TASK_STARTUP_HOOK : lance une fonction au démarrage
 ### 3.3 Statistiques dans l’IDE
 
 4. Lancez le programme puis mettez-le en pause pour voir les statistiques.
+
 ![plot](./Screenshot7.png)
 
 7. Affichez les sémaphores et les queues.
@@ -94,6 +102,7 @@ DEVID, et vérifiez si elle est correcte.
 Voici le code le fonction et le résultat:
 
 ![plot](./Screenshot8.png)
+
 ![plot](./Screenshot9.png)
 
 4. Quelles sont les valeurs à mettre dans les registres INT_ENABLE et POWER_CTL pour démarrer la mesure et délencher une interruption à chaque mesure ?
