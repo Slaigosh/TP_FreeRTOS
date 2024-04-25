@@ -47,10 +47,11 @@ C'est géré par le FreeRTOS car on le retrouve dans la fonction pvPortMalloc qu
 
 4. Notez la mémoire RAM et Flash utilisée.
 Voici notre mémoire à cet instant:
+https://github.com/Slaigosh/TP_FreeRTOS/blob/main/Screenshot4.png
 
-6. Créez des tâches bidons jusqu’à avoir une erreur.
+5. Créez des tâches bidons jusqu’à avoir une erreur.
 
-7. Notez la nouvelle utilisation mémoire.
+6. Notez la nouvelle utilisation mémoire.
 
 8. Dans CubeMX, augmentez la taille du tas (TOTAL_HEAP_SIZE). Générez le code, compilez et testez.
 
