@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
+#include "spi.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -39,6 +40,7 @@ int addition (int argc, char ** argv);
 int led(int argc, char ** argv);
 int spam(int argc, char ** argv);
 int status(int argc, char ** argv);
+int adx(int argc, char ** argv);
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -66,6 +68,12 @@ void MX_FREERTOS_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+void vApplicationStackOverflowHook( TaskHandle_t xTask, signed char *pcTaskName )
+{
+
+}
+
 SemaphoreHandle_t myBinarySem01; // handle semaphore
 
 TaskHandle_t handle_blink_led, handle_echo_uart, handle_shell, handle_spam, handle_bidon, handle_status;
@@ -75,6 +83,18 @@ char * msg = "test";
 QueueHandle_t timerQueue; //handle queue
 
 uint8_t timer_value = 0;
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if(huart->Instance == USART1) // on s'assure que c'est l'uart1
+	{
+		BaseType_t xHigherPriorityTaskWoken; //
+		vTaskNotifyGiveFromISR( handle_shell, &xHigherPriorityTaskWoken );
+
+		portYIELD_FROM_ISR( xHigherPriorityTaskWoken ); //
+	}
+
+}
 /*
 void giveTask(void * argument)
 {
@@ -127,11 +147,11 @@ void task_blink_led(void * unused)
 	{
 	  if(delayLed != 0 )
 	  {
-		  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+		  //HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 		  vTaskDelay(portTICK_PERIOD_MS*delayLed);  }
 	  else
 	  {
-		  HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin,GPIO_PIN_RESET);
+		  //HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin,GPIO_PIN_RESET);
 		  vTaskSuspend(handle_blink_led);
 	  }
 	}
@@ -145,6 +165,7 @@ void shell(void * unused)
 	shell_add('l', led, "Change led delay (ms)");
 	shell_add('s', spam, "spam message");
 	shell_add('c', status, "CPU status");
+	shell_add('x', adx, "ADXL");
 
 	shell_run();
 }
@@ -167,10 +188,7 @@ void task_spam(void *unused)
 
 void task_status(void *unused)
 {
-	for(;;)
-	{
 
-	}
 }
 
 int __io_putchar(int ch) {  //code printf
@@ -264,6 +282,31 @@ int status(int argc, char ** argv)
 
 	return 0;
 }
+
+#define ADXL_WRITE 0
+#define ADXL_READ (1 << 7)
+#define ADXL_MULTIPLE (1 << 6)
+#define ADXL_SINGLE 0
+#define ADXL_DEVID 0xE5
+
+int adx(int argc, char ** argv)
+{
+	unsigned char rx, tx = ADXL_READ + ADXL_SINGLE + 0;
+
+	HAL_GPIO_WritePin(NSS_GPIO_Port, NSS_Pin, GPIO_PIN_RESET);
+
+	HAL_SPI_Transmit(&hspi2, &tx, 1, HAL_MAX_DELAY);
+	HAL_SPI_Receive(&hspi2, &rx, 1, HAL_MAX_DELAY);
+
+	HAL_GPIO_WritePin(NSS_GPIO_Port, NSS_Pin, GPIO_PIN_SET);
+
+	if(rx == ADXL_DEVID)
+		printf("ADXL détecté\r\n");
+	else
+		printf("Erreur, ADXL non détecté\r\n");
+
+	return 0;
+}
 /* USER CODE END 0 */
 
 /**
@@ -296,8 +339,10 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   MX_TIM2_Init();
+  MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
   myBinarySem01 = xSemaphoreCreateBinary();
+
 
   	timerQueue = xQueueCreate(Q_UART1_LENGTH, Q_UART1_SIZE);
 /*
@@ -331,6 +376,7 @@ int main(void)
     					5, //Prio
     					&handle_spam
     				   );
+  /*
   xTaskCreate(  task_status,
       				"STATUS",
     					256, // Taille de la pile (en mots de 32 bits)
@@ -338,6 +384,7 @@ int main(void)
     					5, //Prio
     					&handle_status
     				   );
+  */
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
