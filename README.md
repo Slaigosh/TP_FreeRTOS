@@ -89,7 +89,13 @@ Il n'y en a pas car on n'en utilise pas dans le projet.
 ## 4 Écriture d’un driver
 ### 4.2 Premiers tests
 
-3. Quelles sont les valeurs à mettre dans les registres INT_ENABLE et POWER_CTL pour démarrer la mesure et délencher une interruption à chaque mesure ?
+2. Dans la fonction shell, écrivez un code permettant de récupérer la valeur du
+DEVID, et vérifiez si elle est correcte.
+Voici le code le fonction et le résultat:
+![plot](./Screenshot8.png)
+![plot](./Screenshot9.png)
+
+4. Quelles sont les valeurs à mettre dans les registres INT_ENABLE et POWER_CTL pour démarrer la mesure et délencher une interruption à chaque mesure ?
 Il faut mettre le bit D7 DATA_READY à 1 dans INT_ENABLE
 Il faut mettre le bit D3 Measure à 1 dans POWER_CTL
 
